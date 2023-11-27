@@ -1,0 +1,7 @@
+{
+    "ConnectionStrings": {
+        "conn1": "Server=.;Database=School;Trusted_Connection=True;TrustServerCertificate=True;"
+
+
+    }
+}
