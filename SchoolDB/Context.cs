@@ -23,7 +23,7 @@ namespace SchoolDB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>().HasMany(x => x.Courses).WithMany(x => x.Students)
-                //.UsingEntity<StudentCourse>()
+                .UsingEntity<StudentCourse>()
             ;
             //modelBuilder.Entity<Course>().InsertUsingStoredProcedure();
             //modelBuilder.Entity<StudentCourse>().ToView("StdC");
@@ -32,7 +32,7 @@ namespace SchoolDB
         public DbSet<Student> Students { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public  DbSet<StudentCourse> StdC { get; set; }
+      // public DbSet<StudentCourse> StdC { get; set; }
     }
     
     public class Student

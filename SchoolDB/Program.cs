@@ -21,8 +21,7 @@ namespace SchoolDB
                 fc.Database.ExecuteSqlRaw("""
                    Create or alter Procedure [dbo].[SelectStudent] @id int
                    as 
-                   Select * from Students where StudentId = @id;
-                   
+                   Select * from Students where StudentId = @id;                  
                    """);
                 var students = fc.Students.FromSql($"SelectStudent 6");
                 foreach (Student s in students)
@@ -40,30 +39,41 @@ namespace SchoolDB
         {
             using (FactoryContext fc = new())
             {
+                var transaction = fc.Database.BeginTransaction();
                 //Console.WriteLine("Before");
                 //foreach (var stu in fc.Students)
                 //{
                 //    Console.WriteLine(stu.StudentId + stu.FirstName + stu.LastName);
                 //}
-                Student s = new()
+                try
                 {
-                    StudentId = 7,
-                    FirstName = "urc",
-                    LastName = "Evol",
-                    DateOfBirth = DateTime.Now,
-                    Weight = 50,
-                    Height = 173,
-                    GradeId = 1,
-                    Photo = [1, 2]
-                };
-                Console.WriteLine("After");
-                fc.Students.Attach(s);
-                Console.WriteLine(fc.Entry(s).State);
-                foreach (var stu in fc.Students)
-                {
-                    Console.WriteLine(stu.StudentId + stu.FirstName + stu.LastName);
+                    Student s = new()
+                    {
+                        StudentId = 7,
+                        FirstName = "urc",
+                        LastName = "Evol",
+                        DateOfBirth = DateTime.Now,
+                        Weight = 50,
+                        Height = 173,
+                        GradeId = 1,
+                        Photo = [1, 2]
+                    };
+                    Console.WriteLine("After");
+                    fc.Students.Attach(s);
+                    Console.WriteLine(fc.Entry(s).State);
+                    foreach (var stu in fc.Students)
+                    {
+                        Console.WriteLine(stu.StudentId + stu.FirstName + stu.LastName);
+                    }
+                    fc.SaveChanges();
+                    transaction.Commit();
                 }
-                fc.SaveChanges();
+                catch
+                {
+                    Console.WriteLine("Rollback");
+                    transaction.Rollback();
+                }
+                
                 
             }
         }

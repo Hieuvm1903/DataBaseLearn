@@ -12,8 +12,8 @@ using SchoolDB;
 namespace SchoolDB.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    [Migration("20231127033330_addSC")]
-    partial class addSC
+    [Migration("20231127090406_addCourse")]
+    partial class addCourse
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace SchoolDB.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.Property<int>("CoursesCourseID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentsStudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CoursesCourseID", "StudentsStudentId");
-
-                    b.HasIndex("StudentsStudentId");
-
-                    b.ToTable("CourseStudent");
-                });
 
             modelBuilder.Entity("SchoolDB.Course", b =>
                 {
@@ -123,22 +108,11 @@ namespace SchoolDB.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.ToTable("StdC");
-                });
+                    b.HasIndex("CourseID");
 
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.HasOne("SchoolDB.Course", null)
-                        .WithMany()
-                        .HasForeignKey("CoursesCourseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasIndex("StudentID");
 
-                    b.HasOne("SchoolDB.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsStudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("StudentCourse");
                 });
 
             modelBuilder.Entity("SchoolDB.Student", b =>
@@ -154,6 +128,21 @@ namespace SchoolDB.Migrations
                         .HasForeignKey("StudentId1");
 
                     b.Navigation("Grade");
+                });
+
+            modelBuilder.Entity("SchoolDB.StudentCourse", b =>
+                {
+                    b.HasOne("SchoolDB.Course", null)
+                        .WithMany()
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolDB.Student", null)
+                        .WithMany()
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SchoolDB.Grade", b =>

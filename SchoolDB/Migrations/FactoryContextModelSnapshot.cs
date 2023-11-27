@@ -22,21 +22,6 @@ namespace SchoolDB.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.Property<int>("CoursesCourseID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentsStudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CoursesCourseID", "StudentsStudentId");
-
-                    b.HasIndex("StudentsStudentId");
-
-                    b.ToTable("CourseStudent");
-                });
-
             modelBuilder.Entity("SchoolDB.Course", b =>
                 {
                     b.Property<int>("CourseID")
@@ -120,22 +105,11 @@ namespace SchoolDB.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.ToTable("StdC");
-                });
+                    b.HasIndex("CourseID");
 
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.HasOne("SchoolDB.Course", null)
-                        .WithMany()
-                        .HasForeignKey("CoursesCourseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasIndex("StudentID");
 
-                    b.HasOne("SchoolDB.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsStudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("StudentCourse");
                 });
 
             modelBuilder.Entity("SchoolDB.Student", b =>
@@ -151,6 +125,21 @@ namespace SchoolDB.Migrations
                         .HasForeignKey("StudentId1");
 
                     b.Navigation("Grade");
+                });
+
+            modelBuilder.Entity("SchoolDB.StudentCourse", b =>
+                {
+                    b.HasOne("SchoolDB.Course", null)
+                        .WithMany()
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolDB.Student", null)
+                        .WithMany()
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SchoolDB.Grade", b =>
