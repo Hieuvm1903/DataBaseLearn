@@ -3467,11 +3467,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\SchoolDB\\SchoolDB.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\DataBaseLearn\\DataBaseLearn\\SchoolDB\\SchoolDB.csproj",
       "projectName": "SchoolDB",
-      "projectPath": "C:\\Users\\Admin\\source\\repos\\SchoolDB\\SchoolDB.csproj",
+      "projectPath": "C:\\Users\\Admin\\source\\repos\\DataBaseLearn\\DataBaseLearn\\SchoolDB\\SchoolDB.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\source\\repos\\SchoolDB\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\source\\repos\\DataBaseLearn\\DataBaseLearn\\SchoolDB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

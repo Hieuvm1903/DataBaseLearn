@@ -40,7 +40,10 @@ namespace SchoolDB
         {
         }
         public int StudentId { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
+        [StringLength(100)]
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
        

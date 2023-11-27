@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mxyL9mNMk8dzIHnQ2QUlf1cB86LpF/SJA+SmS6AlWvo0aDN9ZvB6XY/P6r7OHZhLmfARzTasdLC57yTUHEPbEg==",
+  "dgSpecHash": "us3oodrL0mZTg8nTcBsGUrOfYVm4V5cYNAQU0b4wsrhzxjgRlWPvleLIjMgs53QyyhkAhzlZ7B6yOLLsVJDtrw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\source\\repos\\SchoolDB\\SchoolDB.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\source\\repos\\DataBaseLearn\\DataBaseLearn\\SchoolDB\\SchoolDB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
