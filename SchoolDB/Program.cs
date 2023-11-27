@@ -47,7 +47,7 @@ namespace SchoolDB
                 //}
                 Student s = new()
                 {
-                    StudentId = 100,
+                    StudentId = 7,
                     FirstName = "urc",
                     LastName = "Evol",
                     DateOfBirth = DateTime.Now,

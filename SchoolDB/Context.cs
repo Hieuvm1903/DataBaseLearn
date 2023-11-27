@@ -23,7 +23,8 @@ namespace SchoolDB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>().HasMany(x => x.Courses).WithMany(x => x.Students)
-                .UsingEntity<StudentCourse>();
+                //.UsingEntity<StudentCourse>()
+            ;
             //modelBuilder.Entity<Course>().InsertUsingStoredProcedure();
             //modelBuilder.Entity<StudentCourse>().ToView("StdC");
 
