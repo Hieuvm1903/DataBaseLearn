@@ -13,22 +13,14 @@ namespace ADO
     {
         static void Main(string[] args)
         {
-            //DataTable dt = DataProvider.Instance.ExecuteQuery("Select * from Students ");
-            //foreach(DataRow row in dt.Rows)
-            //{     
-            //    {
-            //        Console.WriteLine(row["FirstName"].ToString()+" " + row["LastName"]);
+            DataTable dt = DataProvider.Instance.ExecuteQuery("Select * from Students ");
+            foreach (DataRow row in dt.Rows)
+            {
+                {
+                    Console.WriteLine(row["FirstName"].ToString() + " " + row["LastName"]);
 
-            //    }
-            //}
-            
-            
-
-
-
-
-
-
+                }
+            }
 
             Console.ReadKey();
 

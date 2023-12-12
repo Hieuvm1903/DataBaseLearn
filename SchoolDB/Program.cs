@@ -7,9 +7,48 @@ namespace SchoolDB
     {
         static void Main(string[] args)
         {
-            Test2();
+           
+
+
+
 
             Console.ReadKey();
+        }
+        static void Test4()
+        {
+            using (FactoryContext fc = new())
+            {
+
+                var s2 = fc.Students
+                    //.ToList()
+                    .Include(s => s.Grade)
+                    ;
+                //fc.Entry(s2.FirstOrDefault()).Reference(s => s.Grade).Load();
+                foreach (var s in s2)
+                {
+                    //s.Grade= fc.Grades.Find(s.GradeId);
+
+                    Console.WriteLine(s.Grade.GradeName);
+
+                }
+
+
+
+
+
+            }
+        }
+        static IEnumerable Test3()
+        {
+            using (FactoryContext fc = new())
+            {
+                foreach(var s in fc.Students)
+                {
+
+                    yield return s;
+                }
+                var s2 = fc.Students.Include(s => s.Grade);
+            }
         }
         static void Test1()
         {
@@ -29,7 +68,7 @@ namespace SchoolDB
                     Console.WriteLine(s.FirstName + " " + s.LastName);
 
                 }
-
+                var res = from s in students select  new{ s.FirstName,s.LastName} ;
 
 
             }
